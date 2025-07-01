@@ -3,6 +3,7 @@ from datetime import datetime
 import user_agents
 import csv
 import os
+import pytz  # al inicio del archivo
 
 app = Flask(__name__)
 
@@ -13,7 +14,10 @@ def index():
     browser = f"{user_agent.browser.family} {user_agent.browser.version_string}"
     operating_system = f"{user_agent.os.family} {user_agent.os.version_string}"
     device = user_agent.device.family or "Desconocido"
-    access_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    tz_mx = pytz.timezone('America/Mexico_City')
+    access_time = datetime.now(tz_mx).strftime('%Y-%m-%d %H:%M:%S')
+
 
     # Registrar datos en un archivo CSV
     csv_file = 'registro_visitas.csv'
