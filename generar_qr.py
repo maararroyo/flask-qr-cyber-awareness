@@ -1,5 +1,5 @@
 import qrcode
 
-url = " https://c4c9-189-147-248-190.ngrok-free.app"  
+url = "https://flask-qr-cyber-awareness.onrender.com"  
 img = qrcode.make(url)
 img.save("codigo_qr.png")
